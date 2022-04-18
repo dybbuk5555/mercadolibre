@@ -1,0 +1,100 @@
+<div class="fashion-nav-footer-contact">
+  <div class="fashion-nav-footer-contact__content header--custom-background">
+    <div class="nav-bounds nav-bounds--contact">
+      <div class="fashion-nav-footer__brand-col header--custom-text">
+        <div class="footer--custom-heading">ÚNETE A NOSOTROS</div>
+        <div class="footer--custom-text">Regístrate para obtener lo último en ventas, nuevos lanzamientos y más ...
+        </div>
+        <input type="text" class="footer--custom-input footer--custom-text" placeholder="Introduzca su email" />
+        <button class="footer--custom-button">INSCRIBIRSE</button>
+      </div>
+
+      <div class="fashion-nav-footer__categories-col fashion-nav-footer__pages header--custom-border">
+        <div class="footer--custom-heading">SERVICIO AL CLIENTE</div>
+        <span class="fashion-nav-footer__page">
+          {{#each menu}}
+          <a href="{{url}}" data-id="{{id}}" class="footer--custom-text">
+            {{name}}
+          </a>
+          {{/each}}
+          <a href="{{linkToHowBuy.href}}" class="footer--custom-text">COMPRAR</a>
+        </span>
+      </div>
+
+      <div class="fashion-nav-footer__contact-col">
+        <div class="footer--custom-heading">NUESTRO COMPROMISO</div>
+        <div class="footer--custom-text">Formulamos productos innovadores para el cuidado de la piel con integridad y
+          amor. 100% libre de crueldad.</div>
+        <div class="fashion-nav-footer__social-media">
+          {{#each socialNetworks}}
+          <a href="{{url}}" rel="noreferrer noopener" target="_blank" class="header--custom-svg">
+            {{> (concat 'icons/social_networks/' (lookup . 'name'))}}
+          </a>
+          {{/each}}
+        </div>
+        {{#if showContact}}
+        <ul class="fashion-nav-footer__contact header--custom-border">
+          {{#if showPhone}}
+          <li class="contact-phone-number">
+            <a class="header--custom-text" itemprop="telephone" href="tel:{{phone.raw}}" rel="nofollow">Tel:
+              {{phone.formatted}}</a>
+          </li>
+          {{/if}}
+          {{#if showEmail}}
+          <li class="contact-mail">
+            <a class="header--custom-text" itemprop="email" href="mailto:{{email}}" rel="nofollow">{{email}}</a>
+          </li>
+          {{/if}}
+          {{#if address}}
+          {{#with address}}
+          <li>
+            <a class="header--custom-text" itemprop="streetAddress">{{address}}</a>
+            <a class="header--custom-text" itemprop="addressLocality">{{city}}</a>
+            <a class="header--custom-text" itemprop="addressRegion">{{state}}</a>
+          </li>
+          {{/with}}
+          {{/if}}
+          <meta itemprop="contactType" content="customer service" />
+        </ul>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+<footer role="contentinfo" class="fashion-nav-footer nav-footer header--custom-text header--custom-background">
+  <div class="nav-bounds nav-bounds--copyright">
+    <div class="nav-footer-primaryinfo">
+      <small class="nav-footer-copyright">
+        <div class="nav-footer-disclaimer">
+          <div>
+            <div class="nav-footer-about">
+              <a href="{{{linkToMShopsLandingPage}}}" target="_blank"
+                class="header--custom-text">{{i18n.powered_by}}</a>
+              {{#if linkToLegalNotices}}
+              <a href="{{linkToLegalNotices.href}}" class="header--custom-text">{{linkToLegalNotices.label}}</a>
+              {{/if}}
+              {{#if linkToLGPD}}
+              <a href="{{linkToLGPD.href}}" class="header--custom-text">{{linkToLGPD.label}}</a>
+              {{/if}}
+            </div>
+            {{#if showBusinessData}}
+            {{#with fiscalData}}
+            <div class="nav-footer-fiscal-data">
+              <p class="nav-footer-fiscal-data__name">{{legal_name}}</p>
+              <p class="nav-footer-fiscal-data__id">{{legal_doc}}</p>
+            </div>
+            {{/with}}
+            {{/if}}
+          </div>
+          {{#if showQrData}}
+          {{#with fiscalData}}
+          <a href={{qr_link}} target="_F960AFIPInfo">
+            <img class="nav-footer-afip-img" src={{qr_img}} alt="Data fiscal" />
+          </a>
+          {{/with}}
+          {{/if}}
+        </div>
+      </small>
+    </div>
+  </div>
+</footer>
